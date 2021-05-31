@@ -45,12 +45,12 @@
                             ?>
                             <tr> 
                                 <td><?php echo $no++; ?></td> 
-                                <td><?php echo $data['nama']; ?></td>
-                                <td><?php echo $data['nim']; ?></td> 
-                                <td><?php echo $data['alamat']; ?></td> 
+                                <td><?php echo $data['NAMA']; ?></td>
+                                <td><?php echo $data['NIM']; ?></td> 
+                                <td><?php echo $data['ALAMAT']; ?></td> 
                                 <td>
-                                    <a href="edit.php?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm text-white">EDIT</a> 
-                                    <a href="delete.php?id=<?php echo $data['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data mahasiswa ini?')">HAPUS</a> 
+                                    <a href="edit.php?ID=<?php echo $data['ID']; ?>" class="btn btn-warning btn-sm text-white">EDIT</a> 
+                                    <a href="delete.php?ID=<?php echo $data['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin akan menghapus data mahasiswa ini?')">HAPUS</a> 
                                 </td> 
                             </tr> 
                             <?php 
@@ -60,5 +60,52 @@
                 </table> 
             </div> 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3..5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#tabelMahasiswa').DataTable();
+                });
+            </script>
         </body> 
         </html>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahData">
+                Tambah Data
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="tambahData" tabindex="-1" aria-labelledby="tambahDataLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                 <form method="post" action="store.php" name="form">
+                 <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="mb-3">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Mahasiswa" name="nama" required>
+                     </div>
+                     <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">NIM</label>
+                        <input type="text" class="form-control" id="NIM" placeholder="Masukkan NIM Mahasiswa" name="nim" required>
+                     </div>
+                 <div class="mb-3">
+                     <label for="Alamat" class="form-label">Example textarea</label>
+                     <textarea type="text" class="form-control" id="Alamat" placeholder="Masukkan Alamat Mahasiswa" name="alamat" required></textarea> 
+                 </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     <button type="submit" class="btn btn-primary" value="SIMPAN">Tambah</button>
+                 </div>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>      
+</html>
